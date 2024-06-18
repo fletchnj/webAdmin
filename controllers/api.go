@@ -15,6 +15,12 @@ type API struct {
 	User   *engine.Route
 }
 
+func NewAPI() *API {
+	return &API{
+		Logger: engine.Logger,
+	}
+}
+
 func (a *API) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	ctx = context.WithValue(ctx, engine.ContextOriginalPath, r.URL.Path)
